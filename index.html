@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Smart Task Manager – Organize your daily tasks with ease. Add, complete, and delete tasks in real time." />
+    <title>Smart Task Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- Animated background orbs -->
+    <div class="bg-orb orb1"></div>
+    <div class="bg-orb orb2"></div>
+    <div class="bg-orb orb3"></div>
+
+    <div class="app-wrapper">
+
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-icon">
+                <i class="fas fa-check-double"></i>
+            </div>
+            <div class="header-text">
+                <h1>Smart Task Manager</h1>
+                <p class="subtitle">Stay organized, stay productive.</p>
+            </div>
+        </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-item" id="stat-total">
+                <span class="stat-number" id="total-count">0</span>
+                <span class="stat-label">Total Tasks</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item" id="stat-completed">
+                <span class="stat-number" id="completed-count">0</span>
+                <span class="stat-label">Completed</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item" id="stat-pending">
+                <span class="stat-number" id="pending-count">0</span>
+                <span class="stat-label">Pending</span>
+            </div>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <div class="input-wrapper">
+                <i class="fas fa-pen-to-square input-icon"></i>
+                <input type="text" id="task-input" placeholder="What do you need to accomplish today?" maxlength="120"
+                    autocomplete="off" />
+            </div>
+
+            <div class="input-controls">
+                <select id="priority-select" aria-label="Task Priority">
+                    <option value="medium">🟡 Medium</option>
+                    <option value="high">🔴 High</option>
+                    <option value="low">🟢 Low</option>
+                </select>
+                <button id="add-btn" onclick="addTask()">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Task</span>
+                </button>
+            </div>
+
+            <!-- Validation message -->
+            <div id="validation-msg" class="validation-msg" role="alert" aria-live="polite"></div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all" onclick="filterTasks('all', this)">All</button>
+            <button class="filter-btn" data-filter="pending" onclick="filterTasks('pending', this)">Pending</button>
+            <button class="filter-btn" data-filter="completed"
+                onclick="filterTasks('completed', this)">Completed</button>
+            <button class="filter-btn clear-btn" onclick="clearCompleted()" title="Remove all completed tasks">
+                <i class="fas fa-broom"></i> Clear Done
+            </button>
+        </div>
+
+        <!-- Task List -->
+        <main>
+            <ul id="task-list" aria-label="Task List"></ul>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="empty-state">
+                <div class="empty-icon"><i class="fas fa-clipboard-list"></i></div>
+                <h2>No tasks yet!</h2>
+                <p>Add your first task above and start being productive.</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Smart Task Manager </p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
